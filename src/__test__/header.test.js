@@ -1,30 +1,42 @@
-import React from "react"
-import Header from "../component/Header"
-import {render} from '@testing-library/react-native'
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import { useNavigation } from '@react-navigation/native'; // ✅ Import useNavigation
+import Header from '../component/Header';
 
-describe("login header" , () => {
-    it("testing casticon " , () => {
-       const page = render(<Header />)
-       const CastIcon = page.getByTestId("CastIcon")
-       
+// Mock useNavigation globally
+const mockNavigate = jest.fn();
 
-       expect(CastIcon).toBeTruthy();
-      
+jest.mock('@react-navigation/native', () => ({
+    useNavigation: () => ({
+        navigate: mockNavigate, // ✅ Directly use a mock function
     }),
-    it("testing NotificationIcon " , () => {
-        const page = render(<Header />)
-      
-        const NotificationIcon = page.getByTestId("NotificationIcon")
+    useRoute: jest.fn(() => ({
+        params: {},
+    })),
+}));
 
-        expect(NotificationIcon).toBeTruthy();
-        
-     }),
-     it("testing Search Icon " , () => {
-        const page = render(<Header />)
-      
-        const SearchIcon = page.getByTestId("SearchIcon")
+describe('Header component tests', () => {
+    it('renders CastIcon correctly', () => {
+        const { getByTestId } = render(<Header />);
+        expect(getByTestId('cast-icon')).toBeTruthy();
+    });
 
-        expect(SearchIcon).toBeTruthy();
-        
-     })
-})
+    it('renders NotificationIcon correctly', () => {
+        const { getByTestId } = render(<Header />);
+        expect(getByTestId('notification-icon')).toBeTruthy();
+    });
+
+    it('renders SearchIcon correctly', () => {
+        const { getByTestId } = render(<Header />);
+        expect(getByTestId('search-button')).toBeTruthy();
+    });
+
+    it('navigates on SearchIcon press', () => {
+        const { getByTestId } = render(<Header />);
+        const searchIcon = getByTestId('search-button');
+
+        fireEvent.press(searchIcon);
+
+        expect(mockNavigate).toHaveBeenCalledWith('Search'); // ✅ Now it should work!
+    });
+});

@@ -1,0 +1,27 @@
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../screen/HomeScreen';
+
+// Mock useNavigation and useRoute
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    goBack: jest.fn(),
+  }),
+  useRoute: () => ({
+    params: {}, // Mock any route params here
+  }),
+}));
+
+describe("HomeScreen Component", () => {
+  it("renders the HomeScreen without crashing", () => {
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
+    expect(getByTestId("home-screen")).toBeTruthy(); // Replace with an actual test ID from your component
+  });
+});

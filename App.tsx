@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import React, { Component } from 'react';
+import Stacknavigation from './src/Navigation/Stacknavigation';
+
 
 export class App extends Component {
   render() {
-    return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    )
+    return <Stacknavigation />;  
   }
 }
 
-export default App
+export default App;
+
