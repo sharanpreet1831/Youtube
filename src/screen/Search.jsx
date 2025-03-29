@@ -68,7 +68,7 @@ export class Search extends Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: 70
+    
   },
   BoxWrapper: {
    

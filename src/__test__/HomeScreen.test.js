@@ -22,6 +22,33 @@ describe("HomeScreen Component", () => {
         <HomeScreen />
       </NavigationContainer>
     );
-    expect(getByTestId("home-screen")).toBeTruthy(); // Replace with an actual test ID from your component
+    expect(getByTestId("home-screen")).toBeTruthy();
+  });
+
+  it("renders the Header component", () => {
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
+    expect(getByTestId("header-component")).toBeTruthy();
+  });
+
+  it("renders the Body component", () => {
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
+    expect(getByTestId("body-component")).toBeTruthy();
+  });
+
+  it("should have a SafeAreaView as the root component", () => {
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <HomeScreen />
+      </NavigationContainer>
+    );
+    expect(getByTestId("home-screen").type).toBe("RCTSafeAreaView");
   });
 });

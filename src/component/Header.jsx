@@ -11,7 +11,7 @@ class Header extends Component {
     const { navigation } = this.props; 
 
     return (
-      <View style={styles.mainContainer}>
+      <View style={styles.mainContainer} testID='header-component'>
         <View style={styles.imageView}>
           <Image source={require('../Assests/Image/youtubelogo.png')} style={styles.imageStyle} />
         </View>

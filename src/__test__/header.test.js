@@ -8,7 +8,7 @@ const mockNavigate = jest.fn();
 
 jest.mock('@react-navigation/native', () => ({
     useNavigation: () => ({
-        navigate: mockNavigate, // ✅ Directly use a mock function
+        navigate: mockNavigate, 
     }),
     useRoute: jest.fn(() => ({
         params: {},
