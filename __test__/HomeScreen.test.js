@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from '../screen/HomeScreen';
+import HomeScreen from '../src/screen/HomeScreen';
+HomeScreen
 
 // Mock useNavigation and useRoute
 jest.mock('@react-navigation/native', () => ({

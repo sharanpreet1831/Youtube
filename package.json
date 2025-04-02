@@ -54,7 +54,20 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": ["./jest.setup.js"],
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov"
+    ],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "**/screen/**/*.js",
+      "!**/screen/**/*.test.js",
+      "!**/index.js"
+    ],
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },

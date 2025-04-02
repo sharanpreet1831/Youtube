@@ -1,0 +1,6 @@
+projectKey=youtube-sharan
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=youtube-sharan
+ceTaskId=070c0ada-a3fe-4fa6-96c6-a998682e3f88
+ceTaskUrl=http://localhost:9000/api/ce/task?id=070c0ada-a3fe-4fa6-96c6-a998682e3f88

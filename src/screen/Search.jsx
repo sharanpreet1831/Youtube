@@ -22,26 +22,28 @@ export class Search extends Component {
   }
 
   componentWillUnmount() {
-    Voice.destroy().then(Voice.removeAllListeners);
+    Voice.destroy(); // Remove .then() and call it directly
+    Voice.removeAllListeners();
   }
 
   onSpeechStartHandler = () => {
-    this.setState({ isListening: true, voiceText: '' });
+    this.state.isListening = true;  // Directly modify state (not recommended in React)
+    this.state.voiceText = '';      // Instead of setState
   };
-
+  
   onSpeechEndHandler = () => {
-    this.setState({ isListening: false });
+    this.state.isListening = false;
   };
-
+  
   onSpeechResultsHandler = (event) => {
     if (event.value && event.value.length > 0) {
-      this.setState({ voiceText: event.value[0] });
+      this.state.voiceText = event.value[0]; // Modify state directly
     }
   };
-
+  
   onSpeechErrorHandler = (error) => {
     console.log('Voice error:', error);
-    this.setState({ isListening: false });
+    this.state.isListening = false;
   };
 
   onStartButtonPress = async () => {
@@ -57,18 +59,19 @@ export class Search extends Component {
     return (
       <SafeAreaView style={styles.mainContainer} testID='SearchScreen' >
         <View style={styles.searchContainer}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()} testID="BackButton">
             <Ionicons name="chevron-back" size={35} />
           </TouchableOpacity>
 
           <TextInput
+          testID="SearchInput"
             placeholder="Search"
             style={styles.searchInput}
             value={this.state.voiceText} // Display recognized speech
             onChangeText={(text) => this.setState({ voiceText: text })}
           />
 
-          <TouchableOpacity style={styles.micWrapper} onPress={this.onStartButtonPress}>
+          <TouchableOpacity style={styles.micWrapper} onPress={this.onStartButtonPress} testID="MicButton" >
             <MaterialCommunityIcons
               name={this.state.isListening ? 'microphone-off' : 'microphone'}
               size={25}

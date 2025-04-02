@@ -1,6 +1,7 @@
 import React from "react";
 import{fireEvent, render} from '@testing-library/react-native'
-import Login from "../login";
+import Login from "../src/Login";
+
 
 
 describe('Login Screen' , () => {

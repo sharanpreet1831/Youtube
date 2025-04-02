@@ -1,6 +1,7 @@
 import React from "react";
-import Body from "../component/Body";
+
 import {fireEvent, render} from '@testing-library/react-native'
+import Body from "../src/component/Body";
 
 
 describe("body testing of homepage " , () =>{

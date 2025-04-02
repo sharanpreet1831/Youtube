@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { useNavigation } from '@react-navigation/native'; // ✅ Import useNavigation
-import Header from '../component/Header';
+import Header from '../src/component/Header';
+
 
 // Mock useNavigation globally
 const mockNavigate = jest.fn();
